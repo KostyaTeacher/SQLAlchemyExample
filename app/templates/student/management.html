@@ -1,0 +1,60 @@
+{% extends 'base.html' %} 
+
+
+{% block main %} 
+
+<style>
+  /* Задаємо ширину випадаючого списку */
+  #groups {
+    width: 50vw; /* Змініть значення відповідно до ваших потреб */
+  }
+</style>
+
+
+  {% if iterable %}
+    <table>
+      {% for item in iterable %}
+      <tr>
+        <td>
+          <a href="{{ url_for('student_get', id=item.id)}}">{{item}}</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <h1>Empty data was passed</h1>
+  {% endif %} 
+
+  <h2>Add student to this group</h2>
+
+  <form action="{{ url_for('student_management') }}" method="post">
+    <p>
+      <label for="name">Name</label>
+      <input name="name" type="text">
+    </p>
+    <p>
+      <label for="surname">Surname</label>
+      <input name="surname" type="text">
+    </p>
+    <p>
+      <label for="birth_date">Birth date</label>
+      <input name="birth_date" type="date">
+    </p>
+    <p>
+      <label for="address">Address</label>
+      <input name="address" type="text">
+    </p>
+    <p>
+      <label for="groups">Groups</label>
+      <select name="groups" id="groups" multiple>
+        
+        {% for item in groups %}
+          <option value="{{ item.id }}" {% if item.selected %}selected{% endif %}>{{ item }}</option>
+        {% endfor %}
+      </select>
+      
+    </p>
+    <p><button type="submit">ADD</button></p>
+  </form>
+{% endblock main %}
+

@@ -1,0 +1,19 @@
+html {
+    background-color: #98d6a9;
+    text-align: center;
+}
+
+form > * {
+    margin: 6px;
+}
+
+td > a {
+    background-color: #4fc9a0;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+}
+

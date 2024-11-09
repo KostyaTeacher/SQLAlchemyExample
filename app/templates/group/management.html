@@ -1,0 +1,25 @@
+{% extends 'base.html' %} 
+{% block main %} 
+  {% if iterable %}
+    <table>
+      {% for item in iterable %}
+      <tr>
+        <td>
+          <a href="{{ url_for('group_get', id=item.id)}}">{{item}}</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <h1>Відсутні будь-які елементи</h1>
+  {% endif %} 
+
+  <form action="{{ url_for('group_management') }}" method="post" >
+    <p>
+      <label for="name">Name</label>
+      <input name="name" type="text">
+    </p>
+    <p><button type="submit">ADD</button></p>
+  </form>
+{% endblock main %}
+
