@@ -1,4 +1,4 @@
-from flask import redirect, render_template, request, Blueprint, url_for
+from flask import redirect, render_template, request, url_for  # Blueprint,
 
 from ..db import (
     Session,
@@ -8,7 +8,10 @@ from ..db import (
 from sqlalchemy import select
 from datetime import datetime
 
-students_blueprint = Blueprint("students", __name__, url_prefix="/students")
+from .. import app
+
+
+# students_blueprint = Blueprint("students", __name__, url_prefix="/students")
 
 
 def get_age(born):
@@ -23,8 +26,8 @@ def get_age(born):
     #
 
 
-@students_blueprint.post("/")
-def add_item():
+@app.post("/students/")
+def add_students_item():
     with Session() as session:
         item_groups = (
             session.query(Group)
@@ -40,11 +43,11 @@ def add_item():
         )
         session.add(item)
         session.commit()
-        return redirect(url_for("students.management"))
+        return redirect(url_for("students_management"))
 
 
-@students_blueprint.get("/")
-def management():
+@app.get("/students/")
+def students_management():
     with Session() as session:
 
         data = session.query(Student).all()
@@ -56,8 +59,8 @@ def management():
     )
 
 
-@students_blueprint.get("/<int:id>")
-def get_item(id):
+@app.get("/students/<int:id>")
+def get_students_item(id):
     with Session() as session:
         data = session.scalars(select(Student).where(Student.id == id)).first()
         print(data)

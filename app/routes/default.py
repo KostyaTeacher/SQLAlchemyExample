@@ -1,9 +1,9 @@
-from flask import render_template, Blueprint
+from flask import render_template  # , Blueprint
+from .. import app
+
+# default_blueprint = Blueprint("default", __name__, url_prefix="/")
 
 
-default_blueprint = Blueprint("default", __name__, url_prefix="/")
-
-
-@default_blueprint.get("/")
+@app.get("/")
 def main():
     return render_template("main.html")

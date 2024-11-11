@@ -5,7 +5,7 @@
       {% for item in iterable %}
       <tr>
         <td>
-          <a href="{{ url_for('groups.get_item', id=item.id)}}">{{item}}</a>
+          <a href="{{ url_for('get_groups_item', id=item.id)}}">{{item}}</a>
         </td>
       </tr>
       {% endfor %}
@@ -14,7 +14,7 @@
     <h1>Відсутні будь-які елементи</h1>
   {% endif %} 
 
-  <form action="{{ url_for('groups.management') }}" method="post" >
+  <form action="{{ url_for('groups_management') }}" method="post" >
     <p>
       <label for="name">Name</label>
       <input name="name" type="text">
