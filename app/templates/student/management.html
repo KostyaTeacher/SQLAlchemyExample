@@ -16,7 +16,7 @@
       {% for item in iterable %}
       <tr>
         <td>
-          <a href="{{ url_for('student_get', id=item.id)}}">{{item}}</a>
+          <a href="{{ url_for('students.get_item', id=item.id)}}">{{item}}</a>
         </td>
       </tr>
       {% endfor %}
@@ -27,7 +27,7 @@
 
   <h2>Add student to this group</h2>
 
-  <form action="{{ url_for('student_management') }}" method="post">
+  <form action="{{ url_for('students.management') }}" method="post">
     <p>
       <label for="name">Name</label>
       <input name="name" type="text">

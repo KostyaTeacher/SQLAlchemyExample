@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +8,22 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 
 </head>
+
 <body>
     {% block nav %}
+    <nav class="crumbs">
+        <ol>
+            <li class="crumb">
+                <a href="{{ url_for('default.main' ) }}">Головна</a>
+            </li>
+            <li class="crumb">
+                <a href="{{ url_for('students.management' ) }}">Студенти</a>
+            </li>
+            <li class="crumb">
+                <a href="{{ url_for('groups.management' ) }}">Групи</a>
+            </li>
+        </ol>
+    </nav>
     {% endblock nav %}
 
     {% block main %}
@@ -18,5 +32,5 @@
     {% block footer %}
     {% endblock footer %}
 </body>
-</html>
 
+</html>
