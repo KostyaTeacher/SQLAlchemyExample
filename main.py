@@ -1,5 +1,4 @@
-from routes import app
-
+from app import app
 
 
 app.run(port=30000, debug=True)
