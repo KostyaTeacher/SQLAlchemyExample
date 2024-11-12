@@ -1,6 +1,6 @@
 from flask import render_template, request
 from app import app
-from models import (
+from app.db.models import (
     Session,
     Group,
 )
